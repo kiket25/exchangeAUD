@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Conversor de Divisas</title>
+</head>
+<body>
+    <h1>Conversor de Divisas</h1>
+    <form method="post">
+        <input type="number" step="0.01" name="amount" required>
+        <button type="submit">Convertir</button>
+    </form>
+
+    {% if converted_values %}
+    <div class=result>
+        <h2>Resultados:</h2>
+        <ul>
+            {% for currency, value in converted_values.items() %}
+                <li>{{ currency }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</body>
+</html>
+
